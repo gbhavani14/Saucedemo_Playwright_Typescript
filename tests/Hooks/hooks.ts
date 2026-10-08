@@ -187,7 +187,7 @@ function saveScenarioResult(world: BrowserInitiation, { pickle, gherkinDocument,
         // - everything else: "General"
         const reportUser = process.env.TEST_USER || world.loginUser || 'General';
 
-        // Scenario Outlines over users (e.g. TC01 "Successful login as <user>") get one name per
+        // Scenario Outlines over users (e.g. "Successful login as <user>") get one name per
         // user. Replacing the user name with "<user>" puts them in one report row with one
         // column per user, the same way as the @allUsers features.
         const scenario = !process.env.TEST_USER && world.loginUser

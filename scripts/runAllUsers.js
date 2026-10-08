@@ -22,9 +22,25 @@ const EXCLUDED_USERS = ['LockedOutUser', 'InvalidUser', 'EmptyUsername', 'EmptyP
 const REPORTS_DIR = path.join(__dirname, '..', 'tests', 'Reports');
 const HTML_REPORT_DIR = path.join(REPORTS_DIR, 'cucumber-report');
 
+// The cucumber-js program inside node_modules. It is started with the current Node executable
+// instead of "npx", because spawning "npx" directly does not work on Windows (it is npx.cmd there).
+const CUCUMBER_BIN = path.join(__dirname, '..', 'node_modules', '@cucumber', 'cucumber', 'bin', 'cucumber.js');
+
+// "--headless" runs without a visible browser window on every operating system
+// (the same as setting HEADLESS=true, which only works in Mac/Linux shells)
+let args = process.argv.slice(2);
+if (args.includes('--headless')) {
+    process.env.HEADLESS = 'true';
+    args = args.filter(arg => arg !== '--headless');
+}
+
+if (!fs.existsSync(CUCUMBER_BIN)) {
+    console.error('Cucumber is not installed. Run "npm install" in the project folder first.');
+    process.exit(1);
+}
+
 // Arguments containing ".feature" (optionally with a line number) are feature paths,
 // everything else is a user name
-const args = process.argv.slice(2);
 const featurePaths = args.filter(arg => arg.includes('.feature'));
 const requestedUsers = args.filter(arg => !arg.includes('.feature'));
 
@@ -47,8 +63,9 @@ function clearReports() {
 // Each run writes its own HTML report (REPORT_NAME), so the runs do not overwrite each other.
 function runCucumber(label, reportName, cucumberArgs, extraEnv = {}) {
     console.log(`\n========== ${label} ==========`);
-    const run = spawnSync('npx', ['cucumber-js', ...targets, ...cucumberArgs], {
+    const run = spawnSync(process.execPath, [CUCUMBER_BIN, ...targets, ...cucumberArgs], {
         stdio: 'inherit',
+        cwd: path.join(__dirname, '..'),   // cucumber.js config and feature paths are relative to the project folder
         env: {
             ...process.env,
             ...extraEnv,
@@ -56,6 +73,10 @@ function runCucumber(label, reportName, cucumberArgs, extraEnv = {}) {
             REPORTS_CLEARED: 'true',  // tells the hooks not to clear the folder again
         },
     });
+    // If cucumber-js could not be started at all, say why instead of only reporting FAILED
+    if (run.error) {
+        console.error(`Could not start cucumber-js: ${run.error.message}`);
+    }
     return run.status === 0;
 }
 

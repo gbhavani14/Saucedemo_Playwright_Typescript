@@ -6,12 +6,15 @@
   "scripts": {
     "test": "cucumber-js tests/Features",
     "test:allusers": "node scripts/runAllUsers.js",
-    "test:headless": "HEADLESS=true node scripts/runAllUsers.js"
+    "test:headless": "node scripts/runAllUsers.js --headless"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=22"
+  },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.4",

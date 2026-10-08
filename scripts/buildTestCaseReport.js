@@ -150,13 +150,13 @@ function buildTestCasePage(reportsDir, featureFile, records) {
 <p class="muted">${escapeHtml(featureName)}</p>
 <p>${records.length} runs: ${statusBadge('PASSED')} ${passed} &nbsp; ${failed > 0 ? `${statusBadge('FAILED')} ${failed}` : ''}</p>
 
-<h2>Results per scenario and user</h2>
+<h2>Ergebnisse je Szenario und Benutzer</h2>
 <table>
 ${header}
 ${rows}
 </table>
 
-<h2>Run details</h2>
+<h2>Details zum Testlauf</h2>
 ${details}`;
 
     return pageShell(`${featureFile} - Test Report`, body);
@@ -176,7 +176,7 @@ function buildIndexPage(byFeature) {
     }).join('\n');
 
     const body = `
-<h1>Test Report</h1>
+<h1>Testbericht</h1>
 <p class="muted">Run finished: ${escapeHtml(new Date().toLocaleString())}</p>
 ${byFeature.size === 0 ? '<p class="muted">No results found.</p>' : `<table>
 <tr><th>Feature Name</th><th>Result</th><th>Report</th></tr>
