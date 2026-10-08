@@ -47,6 +47,7 @@ npm install --save-dev pdfjs-dist                       # reading the order PDF
 ├── tsconfig.json               TypeScript settings
 ├── scripts/
 │   ├── runAllUsers.js          Runs @allUsers features once per user, then the rest
+|   ├── inspectDynamicCatalog.js Opens the Dynamic Catalog pages
 │   └── buildTestCaseReport.js  Builds the test-case-wise HTML report
 └── tests/
     ├── Features/               Gherkin feature files
