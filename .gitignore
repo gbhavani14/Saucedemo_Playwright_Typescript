@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Test output (recreated on every run)
+tests/Reports/
+test-results/
+playwright-report/
+reports/
+blob-report/
+playwright/.cache/
+
+# Mac / editor
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+
+# Secrets
+.env

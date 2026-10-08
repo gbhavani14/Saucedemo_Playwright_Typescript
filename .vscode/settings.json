@@ -1,0 +1,16 @@
+{
+    "json.schemas": [],
+
+    "files.associations": {
+        "*.feature": "cucumber"
+    },
+
+    "cucumber.features": [
+        "tests/Features/**/*.feature"
+    ],
+    "cucumber.glue": [
+        "tests/StepDefinitions/**/*.ts"
+    ],
+
+    "js/ts.suggestionActions.enabled": false
+}
