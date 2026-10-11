@@ -36,8 +36,8 @@ npm install --save-dev pdfjs-dist                       # reading the order PDF
 |Output	                                | Location|
 |---------------------------------------|-------------|
 |Test case report (open in a browser)	|  tests/Reports/cucumber-report/index.html|
-|Screenshot of every step	            |  tests/Reports/Screenshots/<feature>/<user>/<scenario>/|
-|Downloaded order PDFs	                |  tests/Reports/Pdfs/<user>/|
+|Screenshot of every step	            |  tests/Reports/Screenshots/< feature >/< user >/< scenario >/|
+|Downloaded order PDFs	                |  tests/Reports/Pdfs/< user >/|
 
 
 ##Project Structure
