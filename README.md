@@ -28,16 +28,16 @@ npm install --save-dev pdfjs-dist                       # reading the order PDF
 |Goal	                                       |    Command |
 |----------------------------------------------|-------------|
 |Full regression, all users, browser visible   |	node scripts/runAllUsers.js  |
-|One feature for all users	                   |    node scripts/runAllUsers.js tests/Features/<featurename>.feature|
-|One feature for chosen user	               |    node scripts/runAllUsers.js tests/Features/<featurename>.feature StandardUser|
+|One feature for all users	                   |    node scripts/runAllUsers.js tests/Features/< featurename >.feature|
+|One feature for chosen user	               |    node scripts/runAllUsers.js tests/Features/< featurename >.feature StandardUser|
 
 
 ##Reports
 |Output	                                | Location|
 |---------------------------------------|-------------|
-|Test case report (open in a browser)	|   tests/Reports/cucumber-report/index.html|
+|Test case report (open in a browser)	|  tests/Reports/cucumber-report/index.html|
 |Screenshot of every step	            |  tests/Reports/Screenshots/<feature>/<user>/<scenario>/|
-|Downloaded order PDFs	                |   tests/Reports/Pdfs/<user>/|
+|Downloaded order PDFs	                |  tests/Reports/Pdfs/<user>/|
 
 
 ##Project Structure
